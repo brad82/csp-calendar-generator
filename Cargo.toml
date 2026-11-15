@@ -1,0 +1,26 @@
+[package]
+name = "csp-ical"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+anyhow = "1.0.104"
+dotenvy = "0.15.7"
+hex = "0.4.3"
+http = "1.5.0"
+hyper-rustls = { version = "0.27.10", default-features = false, features = ["http1", "ring", "webpki-tokio", "tls12"] }
+hyper-util = { version = "0.1.21", features = ["client-legacy", "http1", "tokio"] }
+icalendar = "0.17.17"
+jiff = { version = "1.0.0", features = ["tzdb-bundle-always"] }
+libdav = "0.11.2"
+regex = "1.13.1"
+sha1 = "0.11.0"
+tokio = { version = "1.54.1", features = ["rt", "macros"] }
+tower-http = { version = "0.7.1", features = ["auth"] }
+ureq = { version = "3.5.2", features = ["cookies"] }
+
+[profile.release]
+strip = true
+lto = true
+opt-level = "z"
+codegen-units = 1
